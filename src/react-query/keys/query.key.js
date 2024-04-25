@@ -1,0 +1,14 @@
+export const QUERY_KEYS = {
+  //AUTH
+  AUTH: "AUTH",
+
+  //MANAGER
+
+  MANAGER: "MANAGER",
+  MANAGERS: "MANAGERS",
+
+  //EMPLOYEE
+
+  EMPLOYEE: "EMPLOYEE",
+  EMPLOYEES: "EMPLOYEES",
+};
