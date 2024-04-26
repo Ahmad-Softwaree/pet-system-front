@@ -1,7 +1,7 @@
 import { CONTEXT_TYPEs } from "..";
 
 export const utilState = {
-  wantToDelete: false,
+  operation: false,
   method: null,
   id: null,
   type: null,
@@ -15,16 +15,16 @@ export const utilReducer = (state = utilState, action) => {
     case CONTEXT_TYPEs.REFRESH_UTIL:
       return {
         ...state,
-        wantToDelete: false,
+        operation: false,
         method: null,
         id: null,
         type: null,
         image: "",
       };
-    case CONTEXT_TYPEs.DELETE:
+    case CONTEXT_TYPEs.OPERATION:
       return {
         ...state,
-        wantToDelete: !state.wantToDelete,
+        operation: !state.operation,
         method: payload?.method,
         id: payload?.id,
         image: payload?.image,

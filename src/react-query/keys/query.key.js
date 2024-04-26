@@ -11,4 +11,9 @@ export const QUERY_KEYS = {
 
   EMPLOYEE: "EMPLOYEE",
   EMPLOYEES: "EMPLOYEES",
+
+  //PET
+
+  PET: "PET",
+  PETS: "PETS",
 };

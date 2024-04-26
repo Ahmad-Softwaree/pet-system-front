@@ -2,11 +2,11 @@ import { authApi } from "@/lib/config/api.config";
 import { generateToast } from "@/lib/functions";
 import { URLs } from "@/lib/url";
 
-export const getManagers = async (toast, pageParam) => {
+export const getPets = async (toast, pageParam) => {
   try {
     const {
       data: { data },
-    } = await authApi.get(`${URLs.GET_MANAGERS}?pages=${pageParam}`);
+    } = await authApi.get(`${URLs.GET_PETS}?pages=${pageParam}`);
     return data;
   } catch (error) {
     const errors = generateToast(error);
@@ -19,11 +19,11 @@ export const getManagers = async (toast, pageParam) => {
   }
 };
 
-export const getManager = async (toast, id) => {
+export const getPet = async (toast, id) => {
   try {
     const {
       data: { data },
-    } = await authApi.get(`${URLs.GET_MANAGER}/${id}`);
+    } = await authApi.get(`${URLs.GET_PET}/${id}`);
 
     return data;
   } catch (error) {
@@ -37,48 +37,32 @@ export const getManager = async (toast, id) => {
   }
 };
 
-export const makeEmployee = async (id) => {
+export const addPet = async (form) => {
   try {
     const {
       data: { data },
-    } = await authApi.put(`${URLs.MAKE_EMPLOYEE}/${id}`);
-
+    } = await authApi.post(`${URLs.ADD_PET}`, form);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const updatePet = async (id, form) => {
+  try {
+    const {
+      data: { data },
+    } = await authApi.put(`${URLs.UPDATE_PET}/${id}`, form);
     return data;
   } catch (error) {
     throw error;
   }
 };
 
-export const makeHighManager = async (id) => {
+export const deletePet = async (id) => {
   try {
     const {
       data: { data },
-    } = await authApi.put(`${URLs.MAKE_HIGH_MANAGER}/${id}`);
-
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const updateManager = async (id, form) => {
-  try {
-    const {
-      data: { data },
-    } = await authApi.put(`${URLs.UPDATE_MANAGER}/${id}`, form);
-
-    return data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const deleteManager = async (id) => {
-  try {
-    const {
-      data: { data },
-    } = await authApi.delete(`${URLs.DELETE_MANAGER}/${id}`);
-
+    } = await authApi.delete(`${URLs.DELETE_PET}/${id}`);
     return data;
   } catch (error) {
     throw error;

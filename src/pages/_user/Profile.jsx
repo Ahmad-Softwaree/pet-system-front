@@ -12,6 +12,7 @@ const Profile = () => {
   } = useContext(AuthContext);
   const { dispatch } = useContext(UiContext);
   const { mutateAsync, isPending } = useLogout();
+  let roles = ["manager", "high_manager"];
   return (
     <div className="w-full flex flex-col justify-center items-center  p-5 h-full gap-5 py-30">
       <div className="relative w-[100px] h-[100px]">
@@ -28,7 +29,7 @@ const Profile = () => {
         </span>
       </p>
 
-      {user?.role === "manager" ? (
+      {roles.includes(user?.role) ? (
         <button
           onClick={() =>
             dispatch({

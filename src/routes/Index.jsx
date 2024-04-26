@@ -7,13 +7,18 @@ import UserLayout from "@/pages/_user/UserLayout";
 import Error from "@/pages/Error";
 import NotFound from "@/pages/NotFound";
 import RootRouterProvider from "@/provider/RootRouterProvider";
-import UserRouterProvider from "@/provider/UserRouterProvider";
+import UserRouterProvider from "@/provider/ManagerRouterProvider";
 import {
   Navigate,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import HighManagerRouterProvider from "@/provider/HighManagerRouterProvider";
+import EmployeeRouterProvider from "@/provider/EmployeeRouterProvider";
+import ManagerRouterProvider from "@/provider/ManagerRouterProvider";
+import Employees from "@/pages/_user/Employees";
+import Pets from "@/pages/_user/Pets";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,13 +38,34 @@ const router = createBrowserRouter(
         <Route
           errorElement={<Error />}
           path="/"
-          element={<UserRouterProvider Component={UserLayout} />}>
+          element={<EmployeeRouterProvider Component={UserLayout} />}>
           <Route index errorElement={<Error />} element={<Home />} />
           <Route
             path="profile"
             errorElement={<Error />}
             element={<Profile />}
           />
+          <Route path="pets" errorElement={<Error />} element={<Pets />} />
+        </Route>
+      </>
+      <>
+        <Route
+          errorElement={<Error />}
+          path="/"
+          element={<ManagerRouterProvider Component={UserLayout} />}>
+          <Route
+            path="employees"
+            errorElement={<Error />}
+            element={<Employees />}
+          />
+        </Route>
+      </>
+
+      <>
+        <Route
+          errorElement={<Error />}
+          path="/"
+          element={<HighManagerRouterProvider Component={UserLayout} />}>
           <Route
             path="managers"
             errorElement={<Error />}
@@ -47,15 +73,6 @@ const router = createBrowserRouter(
           />
         </Route>
       </>
-
-      {/*<>
-        <Route
-          errorElement={<Error />}
-          path="/"
-          element={<AdminRouteProvider Component={AdminLayout} />}>
-
-        </Route>
-      </>*/}
 
       <Route path="*" element={<NotFound />} errorElement={<Error />} />
     </>

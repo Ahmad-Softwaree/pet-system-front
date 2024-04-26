@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UiContext } from "@/context/UiContext";
 import { CONTEXT_TYPEs } from "@/context";
 import { UtilContext } from "@/context/UtilContext";
-export default function ManagerCard({ index, val }) {
+export default function EmployeeCard({ index, val }) {
   const { dispatch } = useContext(UiContext);
   const { dispatch: util } = useContext(UtilContext);
 
@@ -19,46 +19,25 @@ export default function ManagerCard({ index, val }) {
       <TableCell>{val?.salary}</TableCell>
       <TableCell>{val?.role}</TableCell>
       <TableCell>
-        {val?.role !== "high_manager" ? (
-          <button
-            onClick={() =>
-              util({
-                type: CONTEXT_TYPEs.OPERATION,
-                payload: {
-                  id: val.id,
-                  method: CONTEXT_TYPEs.MAKE_HIGH_MANAGER,
-                },
-              })
-            }
-            className="p-2 px-4 rounded-md bg-tertiary-500 text-white">
-            Make H.M
-          </button>
-        ) : (
-          "Already is"
-        )}
-      </TableCell>
-      <TableCell>
-        {val?.role !== "employee" && (
-          <button
-            onClick={() =>
-              util({
-                type: CONTEXT_TYPEs.OPERATION,
-                payload: {
-                  id: val.id,
-                  method: CONTEXT_TYPEs.MAKE_EMPLOYEE,
-                },
-              })
-            }
-            className="p-2 px-4 rounded-md bg-tertiary-500 text-white">
-            Make Employee
-          </button>
-        )}
+        <button
+          onClick={() =>
+            util({
+              type: CONTEXT_TYPEs.OPERATION,
+              payload: {
+                id: val.id,
+                method: CONTEXT_TYPEs.MAKE_MANAGER,
+              },
+            })
+          }
+          className="p-2 px-4 rounded-md bg-tertiary-500 text-white">
+          Make Manager
+        </button>
       </TableCell>
       <TableCell>
         <Update
           onClick={() =>
             dispatch({
-              type: CONTEXT_TYPEs.MANAGER_FORM,
+              type: CONTEXT_TYPEs.EMPLOYEE_FORM,
               payload: {
                 id: val.id,
                 data: val,
@@ -77,7 +56,7 @@ export default function ManagerCard({ index, val }) {
               type: CONTEXT_TYPEs.OPERATION,
               payload: {
                 id: val.id,
-                method: CONTEXT_TYPEs.DELETE_MANAGER,
+                method: CONTEXT_TYPEs.DELETE_EMPLOYEE,
               },
             })
           }

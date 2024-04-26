@@ -42,6 +42,15 @@ export const login = async (form) => {
     throw error;
   }
 };
+export const register = async (form) => {
+  try {
+    const { data } = await authApi.post(URLs.REGISTER, form);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const updateProfile = async (form) => {
   try {
     const {

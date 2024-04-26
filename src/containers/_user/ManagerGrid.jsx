@@ -1,6 +1,6 @@
 import { ManagerCard } from "@/components/cards";
 
-const ManagersGrid = ({ row, page }) => {
+const ManagerGrid = ({ row, page }) => {
   return (
     <>
       {row.map((val, index) => {
@@ -10,4 +10,4 @@ const ManagersGrid = ({ row, page }) => {
   );
 };
 
-export default ManagersGrid;
+export default ManagerGrid;

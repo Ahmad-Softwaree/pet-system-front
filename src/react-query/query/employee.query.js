@@ -1,4 +1,3 @@
-import { useToast } from "@chakra-ui/react";
 import { QUERY_KEYS } from "../keys/query.key";
 import {
   useInfiniteQuery,
@@ -10,9 +9,11 @@ import {
   deleteEmployee,
   getEmployee,
   getEmployees,
+  makeManager,
   updateEmployee,
 } from "../action/employee.action";
 import { generateToast } from "@/lib/functions";
+import { useToast } from "@/components/ui/use-toast";
 
 export function useGetEmployees() {
   const { toast } = useToast();
@@ -32,6 +33,30 @@ export function useGetEmployee(id) {
     queryKey: [QUERY_KEYS.EMPLOYEE],
     queryFn: () => getEmployee(toast, id),
     retry: 0,
+  });
+}
+
+export function useMakeManager(id) {
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => makeManager(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries([QUERY_KEYS.EMPLOYEES]);
+      return toast({
+        title: "Success",
+        description: "Employee Update Successfully",
+      });
+    },
+    onError: (error) => {
+      const errors = generateToast(error);
+      return errors.forEach((err) => {
+        toast({
+          title: err.title,
+          description: err.description,
+        });
+      });
+    },
   });
 }
 

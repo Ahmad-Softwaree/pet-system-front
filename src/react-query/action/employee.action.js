@@ -38,11 +38,23 @@ export const getEmployee = async (toast, id) => {
   }
 };
 
-export const updateEmployee = async (id) => {
+export const makeManager = async (id) => {
   try {
     const {
       data: { data },
-    } = await authApi.put(`${URLs.UPDATE_EMPLOYEE}/${id}`);
+    } = await authApi.put(`${URLs.MAKE_MANAGER}/${id}`);
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const updateEmployee = async (id, form) => {
+  try {
+    const {
+      data: { data },
+    } = await authApi.put(`${URLs.UPDATE_EMPLOYEE}/${id}`, form);
     return data;
   } catch (error) {
     throw error;

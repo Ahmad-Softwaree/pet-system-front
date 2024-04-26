@@ -1,5 +1,6 @@
 import { useGetEmployees } from "@/react-query/query/employee.query";
 import { useGetManagers } from "@/react-query/query/manager.query";
+import { useGetPets } from "@/react-query/query/pet.query";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -17,6 +18,8 @@ const Pagination = ({ children, page }) => {
       ? useGetManagers()
       : page === "employee"
       ? useGetEmployees()
+      : page === "pet"
+      ? useGetPets()
       : null;
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import {
   getCurrentUser,
   login,
   logout,
+  register,
   updateProfile,
 } from "../action/auth.action";
 import { useToast } from "@/components/ui/use-toast";
@@ -89,6 +90,30 @@ export const useUpdateProfile = () => {
     },
   });
 };
+export const useRegister = () => {
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (form) => register(form),
+    onSuccess: () => {
+      queryClient.invalidateQueries([QUERY_KEYS.MANAGERS]);
+      return toast({
+        title: "Success",
+        description: "Manager Added",
+      });
+    },
+    onError: (error) => {
+      const errors = generateToast(error);
+      return errors.forEach((err) => {
+        toast({
+          title: err.title,
+          description: err.description,
+        });
+      });
+    },
+  });
+};
+
 export const useLogout = () => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
