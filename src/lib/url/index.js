@@ -28,6 +28,14 @@ export const URLs = {
   DELETE_EMPLOYEE: `${API}/employee`,
   MAKE_MANAGER: `${API}/employee/manager`,
 
+  //CUSTOMER
+
+  GET_CUSTOMERS: `${API}/customer`,
+  GET_CUSTOMER: `${API}/customer`,
+  ADD_CUSTOMER: `${API}/customer`,
+  UPDATE_CUSTOMER: `${API}/customer`,
+  DELETE_CUSTOMER: `${API}/customer`,
+
   //VETERINARY
 
   GET_VETERINARIES: `${API}/veterinary`,
@@ -53,4 +61,15 @@ export const URLs = {
   ADD_PRODUCT: `${API}/product`,
   UPDATE_PRODUCT: `${API}/product`,
   DELETE_PRODUCT: `${API}/product`,
+
+  //SHOP
+
+  ADOPT: `${API}/shop/adopt`,
+  BUY: `${API}/shop/buy`,
+
+  //CONFIG
+
+  GET_CONFIG: `${API}/config/config`,
+  GET_PETS_RECEIPT: `${API}/config/pet_receipt`,
+  GET_PRODUCTS_RECEIPT: `${API}/config/product_receipt`,
 };

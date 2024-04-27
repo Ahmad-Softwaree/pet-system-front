@@ -5,6 +5,11 @@ import { useGetProducts } from "@/react-query/query/product.query";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useGetVeterinaries } from "./../../../react-query/query/veterinary.query";
+import { useGetCustomers } from "@/react-query/query/customer.query";
+import {
+  useGetPetsReceipt,
+  useGetProductsReceipt,
+} from "@/react-query/action/config.query";
 
 const Pagination = ({ children, page }) => {
   const { ref, inView } = useInView();
@@ -26,6 +31,12 @@ const Pagination = ({ children, page }) => {
       ? useGetProducts()
       : page === "veterinary"
       ? useGetVeterinaries()
+      : page === "customer"
+      ? useGetCustomers()
+      : page === "pets_receipts"
+      ? useGetPetsReceipt()
+      : page === "products_receipts"
+      ? useGetProductsReceipt()
       : null;
 
   useEffect(() => {

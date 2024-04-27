@@ -6,33 +6,30 @@ import { UiContext } from "@/context/UiContext";
 import { CONTEXT_TYPEs } from "@/context";
 import { UtilContext } from "@/context/UtilContext";
 import { convertTimeStampToDate } from "@/lib/functions";
-export default function ProductCard({ index, val }) {
+import { Link } from "react-router-dom";
+export default function CustomerCard({ index, val }) {
   const { dispatch } = useContext(UiContext);
   const { dispatch: util } = useContext(UtilContext);
 
   return (
     <TableRow>
       <TableCell>{val.id}</TableCell>
-      <TableCell>
-        {val.image_url && val.image_url !== "" && (
-          <img
-            className="w-[200px] h-[200px] object-contain"
-            src={val?.image_url}
-            alt={val?.image_name}
-          />
-        )}
-      </TableCell>
       <TableCell>{val?.name}</TableCell>
-      <TableCell>{val?.type}</TableCell>
-      <TableCell>{val?.price}</TableCell>
-      <TableCell>{val?.discount}</TableCell>
-      <TableCell>{val?.quantity}</TableCell>
-      <TableCell>{convertTimeStampToDate(val?.expire_date)}</TableCell>
+      <TableCell>{val?.address}</TableCell>
+      <TableCell>{val?.phone}</TableCell>
+      <TableCell>{convertTimeStampToDate(val?.created_at)}</TableCell>
+      <TableCell>
+        <Link
+          to={`/shop/${val.id}`}
+          className="p-2 px-4 rounded-md bg-tertiary-500 text-white">
+          Shop
+        </Link>
+      </TableCell>
       <TableCell>
         <Update
           onClick={() =>
             dispatch({
-              type: CONTEXT_TYPEs.PRODUCT_FORM,
+              type: CONTEXT_TYPEs.CUSTOMER_FORM,
               payload: {
                 id: val.id,
                 data: val,
@@ -51,8 +48,7 @@ export default function ProductCard({ index, val }) {
               type: CONTEXT_TYPEs.OPERATION,
               payload: {
                 id: val.id,
-                image: val.image_name,
-                method: CONTEXT_TYPEs.DELETE_PRODUCT,
+                method: CONTEXT_TYPEs.DELETE_CUSTOMER,
               },
             })
           }

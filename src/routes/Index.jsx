@@ -7,9 +7,7 @@ import UserLayout from "@/pages/_user/UserLayout";
 import Error from "@/pages/Error";
 import NotFound from "@/pages/NotFound";
 import RootRouterProvider from "@/provider/RootRouterProvider";
-import UserRouterProvider from "@/provider/ManagerRouterProvider";
 import {
-  Navigate,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
@@ -23,6 +21,11 @@ import Products from "@/pages/_user/Products";
 import Veterinaries from "@/pages/_user/Veterinaries";
 import VeterinarianRouterProvider from "@/provider/VeterinarianRouterProvider";
 import Clinic from "@/pages/_user/Clinic";
+import Customers from "@/pages/_user/Customers";
+import Shop from "@/pages/_user/Shop";
+import AllRouterProvider from "@/provider/AllRouterProvider";
+import PetsReceipts from "@/pages/_user/PetsReceipts";
+import ProductsReceipts from "@/pages/_user/ProductReceipts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,12 +46,6 @@ const router = createBrowserRouter(
           errorElement={<Error />}
           path="/"
           element={<EmployeeRouterProvider Component={UserLayout} />}>
-          <Route index errorElement={<Error />} element={<Home />} />
-          <Route
-            path="profile"
-            errorElement={<Error />}
-            element={<Profile />}
-          />
           <Route path="pets" errorElement={<Error />} element={<Pets />} />
           <Route
             path="products"
@@ -59,6 +56,16 @@ const router = createBrowserRouter(
             path="veterinarians"
             errorElement={<Error />}
             element={<Veterinaries />}
+          />
+          <Route
+            path="customers"
+            errorElement={<Error />}
+            element={<Customers />}
+          />{" "}
+          <Route
+            path="shop/:customer_id"
+            errorElement={<Error />}
+            element={<Shop />}
           />
         </Route>
       </>
@@ -71,6 +78,19 @@ const router = createBrowserRouter(
             path="employees"
             errorElement={<Error />}
             element={<Employees />}
+          />
+        </Route>
+      </>
+      <>
+        <Route
+          errorElement={<Error />}
+          path="/"
+          element={<AllRouterProvider Component={UserLayout} />}>
+          <Route index errorElement={<Error />} element={<Home />} />
+          <Route
+            path="profile"
+            errorElement={<Error />}
+            element={<Profile />}
           />
         </Route>
       </>
@@ -91,6 +111,16 @@ const router = createBrowserRouter(
             path="managers"
             errorElement={<Error />}
             element={<Managers />}
+          />
+          <Route
+            path="pet_receipts"
+            errorElement={<Error />}
+            element={<PetsReceipts />}
+          />
+          <Route
+            path="product_receipts"
+            errorElement={<Error />}
+            element={<ProductsReceipts />}
           />
         </Route>
       </>

@@ -41,4 +41,16 @@ export const homeParts = [
     text: "Customers",
     role: ["manager", "employee", "high_manager"],
   },
+  {
+    link: "/pet_receipts",
+    image: "/images/receipt.png",
+    text: "Pet Receipts",
+    role: ["high_manager"],
+  },
+  {
+    link: "/product_receipts",
+    image: "/images/receipt.png",
+    text: "Product Receipts",
+    role: ["high_manager"],
+  },
 ];

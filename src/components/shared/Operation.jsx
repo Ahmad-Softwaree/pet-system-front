@@ -12,11 +12,12 @@ import {
   useMakeManager,
 } from "@/react-query/query/employee.query";
 import { useDeletePet } from "@/react-query/query/pet.query";
+import { useAdopt, useBuy } from "@/react-query/query/shop.query";
 
 export default function operation() {
   const {
     dispatch,
-    state: { id, method, image, type },
+    state: { id, method, image, type, data },
   } = useContext(UtilContext);
   const { mutateAsync: makeEmployee, isPending: makeEmployeeLoading } =
     useMakeEmployee(id);
@@ -30,13 +31,17 @@ export default function operation() {
     useDeleteEmployee(id);
   const { mutateAsync: deletePet, isPending: deletePetLoading } =
     useDeletePet(id);
+  const { mutateAsync: adopt, isPending: adoptLoading } = useAdopt(id);
+  const { mutateAsync: buy, isPending: buyLoading } = useBuy(id);
   const flag = Boolean(
     makeEmployeeLoading ||
       makeHighManagerLoading ||
       deleteManagerLoading ||
       makeManagerLoading ||
       deleteEmployeeLoading ||
-      deletePetLoading
+      deletePetLoading ||
+      adoptLoading ||
+      buyLoading
   );
 
   return (
@@ -61,6 +66,12 @@ export default function operation() {
             break;
           case CONTEXT_TYPEs.DELETE_PET:
             await deletePet({ image });
+            break;
+          case CONTEXT_TYPEs.ADOPT:
+            await adopt(data);
+            break;
+          case CONTEXT_TYPEs.BUY:
+            await buy(data);
             break;
           default:
             break;

@@ -16,7 +16,7 @@ export default function PetCard({ index, val }) {
   const path = pathname.split("/");
   return (
     <TableRow>
-      <TableCell>{index}</TableCell>
+      <TableCell>{val.id}</TableCell>
       <TableCell>
         {val.image_url && val.image_url !== "" && (
           <img

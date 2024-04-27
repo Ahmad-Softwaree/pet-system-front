@@ -12,7 +12,7 @@ export default function VeterinaryCard({ index, val }) {
 
   return (
     <TableRow>
-      <TableCell>{index}</TableCell>
+      <TableCell>{val.id}</TableCell>
       <TableCell>{val?.name}</TableCell>
       <TableCell>{val?.email}</TableCell>
       <TableCell>{val?.gender}</TableCell>

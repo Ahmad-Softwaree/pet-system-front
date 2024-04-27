@@ -6,6 +6,7 @@ export const utilState = {
   id: null,
   type: null,
   image: "",
+  data: null,
 };
 
 export const utilReducer = (state = utilState, action) => {
@@ -29,6 +30,7 @@ export const utilReducer = (state = utilState, action) => {
         id: payload?.id,
         image: payload?.image,
         type: payload?.type,
+        data: payload?.data,
       };
 
     default:

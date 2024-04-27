@@ -1,5 +1,6 @@
 import { ManagerForm, PetForm, ProfileForm } from "@/components/forms";
 import ClinicForm from "@/components/forms/ClinicForm";
+import CustomerForm from "@/components/forms/CustomerForm";
 import EmployeeForm from "@/components/forms/EmployeeForm";
 import ProductForm from "@/components/forms/ProductForm";
 import VeterinaryForm from "@/components/forms/VeterinaryForm";
@@ -62,7 +63,10 @@ const Modals = () => {
         ["high_manager", "manager", "veterinary"].includes(user?.role) && (
           <ClinicForm />
         )}
-      {customer && user?.role === "manager" && <ProfileForm />}
+      {customer &&
+        ["high_manager", "manager", "employee"].includes(user?.role) && (
+          <CustomerForm />
+        )}{" "}
       {product &&
         ["high_manager", "manager", "employee"].includes(user?.role) && (
           <ProductForm />
