@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { UiContext } from "@/context/UiContext";
 import { CONTEXT_TYPEs } from "@/context";
 import { UtilContext } from "@/context/UtilContext";
+import { convertTimeStampToDate } from "@/lib/functions";
 export default function ManagerCard({ index, val }) {
   const { dispatch } = useContext(UiContext);
   const { dispatch: util } = useContext(UtilContext);
@@ -54,6 +55,7 @@ export default function ManagerCard({ index, val }) {
           </button>
         )}
       </TableCell>
+      <TableCell>{convertTimeStampToDate(val?.created_at)}</TableCell>
       <TableCell>
         <Update
           onClick={() =>

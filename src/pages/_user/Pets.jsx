@@ -48,11 +48,13 @@ const Pets = () => {
                         <TableHead>Name</TableHead>
                         <TableHead>Breed</TableHead>
                         <TableHead>Color</TableHead>
+                        <TableHead>Price</TableHead>
+
                         <TableHead>Gender</TableHead>
                         <TableHead>A.H</TableHead>
                         <TableHead>Age</TableHead>
 
-                        <TableHead>Status</TableHead>
+                        <TableHead>Checked</TableHead>
 
                         <TableHead></TableHead>
                         <TableHead></TableHead>

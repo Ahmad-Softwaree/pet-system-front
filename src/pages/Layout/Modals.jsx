@@ -1,5 +1,8 @@
 import { ManagerForm, PetForm, ProfileForm } from "@/components/forms";
+import ClinicForm from "@/components/forms/ClinicForm";
 import EmployeeForm from "@/components/forms/EmployeeForm";
+import ProductForm from "@/components/forms/ProductForm";
+import VeterinaryForm from "@/components/forms/VeterinaryForm";
 import { Operation, Opacity } from "@/components/shared";
 import { AuthContext } from "@/context/AuthContext";
 import { UiContext } from "@/context/UiContext";
@@ -8,7 +11,16 @@ import { useContext } from "react";
 
 const Modals = () => {
   const {
-    state: { profile, manager, employee, customer, pet, product },
+    state: {
+      profile,
+      manager,
+      employee,
+      customer,
+      pet,
+      product,
+      veterinary,
+      clinic,
+    },
   } = useContext(UiContext);
 
   const {
@@ -18,7 +30,15 @@ const Modals = () => {
     state: { operation },
   } = useContext(UtilContext);
   const flag = Boolean(
-    profile || operation || manager || employee || customer || pet || product
+    profile ||
+      operation ||
+      manager ||
+      employee ||
+      customer ||
+      pet ||
+      product ||
+      veterinary ||
+      clinic
   );
   return (
     <>
@@ -31,11 +51,22 @@ const Modals = () => {
       {employee && ["high_manager", "manager"].includes(user?.role) && (
         <EmployeeForm />
       )}
+      {veterinary &&
+        ["high_manager", "manager", "employee"].includes(user?.role) && (
+          <VeterinaryForm />
+        )}
       {pet && ["high_manager", "manager", "employee"].includes(user?.role) && (
         <PetForm />
       )}
+      {clinic &&
+        ["high_manager", "manager", "veterinary"].includes(user?.role) && (
+          <ClinicForm />
+        )}
       {customer && user?.role === "manager" && <ProfileForm />}
-      {product && user?.role === "manager" && <ProfileForm />}
+      {product &&
+        ["high_manager", "manager", "employee"].includes(user?.role) && (
+          <ProductForm />
+        )}{" "}
     </>
   );
 };

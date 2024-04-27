@@ -12,6 +12,12 @@ export const homeParts = [
     role: ["manager", "high_manager"],
   },
   {
+    link: "/veterinarians",
+    image: "/images/veterinarians.png",
+    text: "Veterinarians",
+    role: ["manager", "employee", "high_manager"],
+  },
+  {
     link: "/pets",
     image: "/images/pets.png",
     text: "Pets",
@@ -24,10 +30,10 @@ export const homeParts = [
     role: ["manager", "employee", "high_manager"],
   },
   {
-    link: "/veterinary",
-    image: "/images/veterinarian.png",
-    text: "Veterinary",
-    role: ["manager", "employee", "high_manager"],
+    link: "/clinic",
+    image: "/images/clinic.png",
+    text: "Clinic",
+    role: ["manager", "employee", "high_manager", "veterinary"],
   },
   {
     link: "/customers",

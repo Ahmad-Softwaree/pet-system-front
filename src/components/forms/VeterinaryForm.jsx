@@ -1,22 +1,17 @@
 import { UiContext } from "@/context/UiContext";
 import React, { useContext, useEffect, useRef } from "react";
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-  Select,
-} from "@chakra-ui/react";
-import { useUpdateProfile } from "@/react-query/query/auth.query";
+import { FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
+import { useRegister } from "@/react-query/query/auth.query";
 import { CONTEXT_TYPEs } from "@/context";
+import { useUpdateVeterinary } from "@/react-query/query/veterinary.query";
 import { Loader } from "../shared";
-const ProfileForm = () => {
-  const { mutateAsync, isPending } = useUpdateProfile();
+const VeterinaryForm = () => {
   const {
     dispatch,
-    state: { data, id },
+    state: { data, id, type },
   } = useContext(UiContext);
+  const { mutateAsync, isPending } =
+    type !== "update" ? useRegister() : useUpdateVeterinary(id);
   const name = useRef();
   const email = useRef();
   const phone = useRef();
@@ -24,10 +19,10 @@ const ProfileForm = () => {
   const gender = useRef();
   const salary = useRef();
   const password = useRef();
-
   const formRef = useRef();
+
   useEffect(() => {
-    if (data) {
+    if (data && type === "update") {
       name.current.value = data?.name;
       email.current.value = data?.email;
       phone.current.value = data?.phone;
@@ -50,14 +45,17 @@ const ProfileForm = () => {
           gender: gender.current.value,
           salary: salary.current.value,
           password: password.current.value,
+          role: "veterinary",
         });
         formRef.current.reset();
         dispatch({
-          type: CONTEXT_TYPEs.PROFILE_FORM,
+          type: CONTEXT_TYPEs.VETERINARY_FORM,
         });
       }}
       className="fixed inset-0 m-auto p-5 max-h-[600px] overflow-y-auto rounded-md bg-primary-500 shadow-md z-[1100] w-[95%] max-w-[500px] h-fit flex flex-col justify-start items-center gap-5 text-white">
-      <h2 className="w-full text-center text-body1-semibold">Update Profile</h2>
+      <h2 className="w-full text-center text-body1-semibold">
+        {type !== "update" ? "Add" : "Update"} Veterinary
+      </h2>
       <FormControl>
         <FormLabel>Name</FormLabel>
         <Input ref={name} type="text" />
@@ -104,7 +102,7 @@ const ProfileForm = () => {
         type="button"
         onClick={() =>
           dispatch({
-            type: CONTEXT_TYPEs.PROFILE_FORM,
+            type: CONTEXT_TYPEs.VETERINARY_FORM,
           })
         }
         className="w-full p-2 rounded-md bg-red-500 text-white">
@@ -114,4 +112,4 @@ const ProfileForm = () => {
   );
 };
 
-export default ProfileForm;
+export default VeterinaryForm;

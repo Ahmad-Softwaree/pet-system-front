@@ -10,27 +10,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import ManagerGrid from "@/containers/_user/ManagerGrid";
+import PetsGrid from "@/containers/_user/PetGrid";
 import { UiContext } from "@/context/UiContext";
 import { CONTEXT_TYPEs } from "@/context";
 
-const Managers = () => {
+const Clinic = () => {
   const { dispatch } = useContext(UiContext);
   return (
     <div className="w-full flex flex-col justify-center items-center  p-5 h-full gap-5 py-30">
       <h1 className="text-white-500 text-sub-heading1-semibold font-bold">
-        Managers
+        Clinic
       </h1>
-      <button
-        onClick={() => {
-          dispatch({
-            type: CONTEXT_TYPEs.MANAGER_FORM,
-          });
-        }}
-        className="p-2 px-4 rounded-md bg-tertiary-500 text-white mt-5">
-        Add Manager
-      </button>
-      <Pagination page={`manager`}>
+
+      <Pagination page={`pet`}>
         {({ isFetchingNextPage, data, hasNextPage, isLoading, ref }) => {
           return (
             <>
@@ -39,30 +31,29 @@ const Managers = () => {
               ) : data?.pages?.some((arr) => arr.length > 0) ? (
                 <>
                   <Table>
-                    <TableCaption>Managers</TableCaption>
+                    <TableCaption>Pets</TableCaption>
                     <TableHeader>
                       <TableRow>
                         <TableHead>Id</TableHead>
+                        <TableHead>Image</TableHead>
+
                         <TableHead>Name</TableHead>
-                        <TableHead>Email</TableHead>
+                        <TableHead>Breed</TableHead>
+                        <TableHead>Color</TableHead>
+                        <TableHead>Price</TableHead>
+
                         <TableHead>Gender</TableHead>
+                        <TableHead>A.H</TableHead>
                         <TableHead>Age</TableHead>
-                        <TableHead>Salary</TableHead>
-                        <TableHead>Role</TableHead>
 
-                        <TableHead>Promote</TableHead>
-                        <TableHead>Demote</TableHead>
-                        <TableHead>Hire Date</TableHead>
+                        <TableHead>Checked</TableHead>
 
-                        <TableHead></TableHead>
                         <TableHead></TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {data.pages.map((row, index) => {
-                        return (
-                          <ManagerGrid key={index} page={index} row={row} />
-                        );
+                        return <PetsGrid key={index} page={index} row={row} />;
                       })}
                     </TableBody>
                   </Table>
@@ -83,4 +74,4 @@ const Managers = () => {
   );
 };
 
-export default Managers;
+export default Clinic;

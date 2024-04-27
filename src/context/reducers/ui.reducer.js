@@ -10,6 +10,8 @@ export const uiState = {
   customer: false,
   pet: false,
   product: false,
+  veterinary: false,
+  clinic: false,
 };
 
 export const uiReducer = (state = uiState, action) => {
@@ -27,7 +29,17 @@ export const uiReducer = (state = uiState, action) => {
         employee: false,
         customer: false,
         pet: false,
+        veterinary: false,
         product: false,
+        clinic: false,
+      };
+    case CONTEXT_TYPEs.CLINIC_FORM:
+      return {
+        ...state,
+        type: payload?.type,
+        id: payload?.id,
+        data: payload?.data,
+        clinic: !state.clinic,
       };
     case CONTEXT_TYPEs.PROFILE_FORM:
       return {
@@ -36,6 +48,14 @@ export const uiReducer = (state = uiState, action) => {
         id: payload?.id,
         data: payload?.data,
         profile: !state.profile,
+      };
+    case CONTEXT_TYPEs.VETERINARY_FORM:
+      return {
+        ...state,
+        type: payload?.type,
+        id: payload?.id,
+        data: payload?.data,
+        veterinary: !state.veterinary,
       };
     case CONTEXT_TYPEs.MANAGER_FORM:
       return {

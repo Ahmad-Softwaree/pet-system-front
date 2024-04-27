@@ -6,40 +6,33 @@ import { UiContext } from "@/context/UiContext";
 import { CONTEXT_TYPEs } from "@/context";
 import { UtilContext } from "@/context/UtilContext";
 import { convertTimeStampToDate } from "@/lib/functions";
-export default function EmployeeCard({ index, val }) {
+export default function ProductCard({ index, val }) {
   const { dispatch } = useContext(UiContext);
   const { dispatch: util } = useContext(UtilContext);
 
   return (
     <TableRow>
       <TableCell>{index}</TableCell>
-      <TableCell>{val?.name}</TableCell>
-      <TableCell>{val?.email}</TableCell>
-      <TableCell>{val?.gender}</TableCell>
-      <TableCell>{val?.age}</TableCell>
-      <TableCell>{val?.salary}</TableCell>
-      <TableCell>{val?.role}</TableCell>
       <TableCell>
-        <button
-          onClick={() =>
-            util({
-              type: CONTEXT_TYPEs.OPERATION,
-              payload: {
-                id: val.id,
-                method: CONTEXT_TYPEs.MAKE_MANAGER,
-              },
-            })
-          }
-          className="p-2 px-4 rounded-md bg-tertiary-500 text-white">
-          Make Manager
-        </button>
+        {val.image_url && val.image_url !== "" && (
+          <img
+            className="w-[200px] h-[200px] object-contain"
+            src={val?.image_url}
+            alt={val?.image_name}
+          />
+        )}
       </TableCell>
-      <TableCell>{convertTimeStampToDate(val?.created_at)}</TableCell>
+      <TableCell>{val?.name}</TableCell>
+      <TableCell>{val?.type}</TableCell>
+      <TableCell>{val?.price}</TableCell>
+      <TableCell>{val?.discount}</TableCell>
+      <TableCell>{val?.quantity}</TableCell>
+      <TableCell>{convertTimeStampToDate(val?.expire_date)}</TableCell>
       <TableCell>
         <Update
           onClick={() =>
             dispatch({
-              type: CONTEXT_TYPEs.EMPLOYEE_FORM,
+              type: CONTEXT_TYPEs.PRODUCT_FORM,
               payload: {
                 id: val.id,
                 data: val,
@@ -58,7 +51,8 @@ export default function EmployeeCard({ index, val }) {
               type: CONTEXT_TYPEs.OPERATION,
               payload: {
                 id: val.id,
-                method: CONTEXT_TYPEs.DELETE_EMPLOYEE,
+                image: val.image_name,
+                method: CONTEXT_TYPEs.DELETE_PRODUCT,
               },
             })
           }

@@ -51,6 +51,7 @@ const Employees = () => {
                         <TableHead>Role</TableHead>
 
                         <TableHead>Promote</TableHead>
+                        <TableHead>Hire Date</TableHead>
 
                         <TableHead></TableHead>
                         <TableHead></TableHead>

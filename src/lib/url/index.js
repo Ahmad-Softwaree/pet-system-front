@@ -28,12 +28,29 @@ export const URLs = {
   DELETE_EMPLOYEE: `${API}/employee`,
   MAKE_MANAGER: `${API}/employee/manager`,
 
+  //VETERINARY
+
+  GET_VETERINARIES: `${API}/veterinary`,
+  GET_VETERINARY: `${API}/veterinary`,
+  UPDATE_VETERINARY: `${API}/veterinary`,
+  DELETE_VETERINARY: `${API}/veterinary`,
+
+  //CLINIC
+
+  CHECK_PET: `${API}/clinic/check`,
   //PET
 
   GET_PETS: `${API}/pet`,
   GET_PET: `${API}/pet`,
   ADD_PET: `${API}/pet`,
-
   UPDATE_PET: `${API}/pet`,
   DELETE_PET: `${API}/pet`,
+
+  //PRODUCT
+
+  GET_PRODUCTS: `${API}/product`,
+  GET_PRODUCT: `${API}/product`,
+  ADD_PRODUCT: `${API}/product`,
+  UPDATE_PRODUCT: `${API}/product`,
+  DELETE_PRODUCT: `${API}/product`,
 };

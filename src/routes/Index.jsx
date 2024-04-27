@@ -19,6 +19,10 @@ import EmployeeRouterProvider from "@/provider/EmployeeRouterProvider";
 import ManagerRouterProvider from "@/provider/ManagerRouterProvider";
 import Employees from "@/pages/_user/Employees";
 import Pets from "@/pages/_user/Pets";
+import Products from "@/pages/_user/Products";
+import Veterinaries from "@/pages/_user/Veterinaries";
+import VeterinarianRouterProvider from "@/provider/VeterinarianRouterProvider";
+import Clinic from "@/pages/_user/Clinic";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,6 +50,16 @@ const router = createBrowserRouter(
             element={<Profile />}
           />
           <Route path="pets" errorElement={<Error />} element={<Pets />} />
+          <Route
+            path="products"
+            errorElement={<Error />}
+            element={<Products />}
+          />
+          <Route
+            path="veterinarians"
+            errorElement={<Error />}
+            element={<Veterinaries />}
+          />
         </Route>
       </>
       <>
@@ -60,7 +74,14 @@ const router = createBrowserRouter(
           />
         </Route>
       </>
-
+      <>
+        <Route
+          errorElement={<Error />}
+          path="/"
+          element={<VeterinarianRouterProvider Component={UserLayout} />}>
+          <Route path="clinic" errorElement={<Error />} element={<Clinic />} />
+        </Route>
+      </>
       <>
         <Route
           errorElement={<Error />}

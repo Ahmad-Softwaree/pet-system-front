@@ -10,9 +10,9 @@ const Login = () => {
         <div className="col-span-full md:col-span-1 p-5 order-2 md:order-1">
           <LoginForm />
         </div>
-        <div className="col-span-full md:col-span-1 rounded-t-md rounded-r-none md:rounded-t-none md:rounded-r-md max-h-[200px] md:max-h-none order-1 md:order-2">
+        <div className="col-span-full md:col-span-1 rounded-t-md rounded-r-none md:rounded-l-none md:rounded-r-md max-h-[200px] md:max-h-none order-1 md:order-2">
           <img
-            className="rounded-t-md rounded-r-none md:rounded-r-md md:rounded-t-none h-full w-full object-cover"
+            className="rounded-t-md rounded-r-none md:rounded-r-md md:rounded-l-none h-full w-full object-cover"
             src="/images/bg.jpg"
             alt="bg"
           />

@@ -10,27 +10,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import ManagerGrid from "@/containers/_user/ManagerGrid";
+import VeterinaryGrid from "@/containers/_user/VeterinaryGrid";
 import { UiContext } from "@/context/UiContext";
 import { CONTEXT_TYPEs } from "@/context";
 
-const Managers = () => {
+const Veterinaries = () => {
   const { dispatch } = useContext(UiContext);
   return (
     <div className="w-full flex flex-col justify-center items-center  p-5 h-full gap-5 py-30">
       <h1 className="text-white-500 text-sub-heading1-semibold font-bold">
-        Managers
+        Veterinaries
       </h1>
       <button
         onClick={() => {
           dispatch({
-            type: CONTEXT_TYPEs.MANAGER_FORM,
+            type: CONTEXT_TYPEs.VETERINARY_FORM,
           });
         }}
         className="p-2 px-4 rounded-md bg-tertiary-500 text-white mt-5">
-        Add Manager
+        Add Veterinary
       </button>
-      <Pagination page={`manager`}>
+      <Pagination page={`veterinary`}>
         {({ isFetchingNextPage, data, hasNextPage, isLoading, ref }) => {
           return (
             <>
@@ -39,7 +39,7 @@ const Managers = () => {
               ) : data?.pages?.some((arr) => arr.length > 0) ? (
                 <>
                   <Table>
-                    <TableCaption>Managers</TableCaption>
+                    <TableCaption>Veterinaries</TableCaption>
                     <TableHeader>
                       <TableRow>
                         <TableHead>Id</TableHead>
@@ -49,9 +49,6 @@ const Managers = () => {
                         <TableHead>Age</TableHead>
                         <TableHead>Salary</TableHead>
                         <TableHead>Role</TableHead>
-
-                        <TableHead>Promote</TableHead>
-                        <TableHead>Demote</TableHead>
                         <TableHead>Hire Date</TableHead>
 
                         <TableHead></TableHead>
@@ -61,7 +58,7 @@ const Managers = () => {
                     <TableBody>
                       {data.pages.map((row, index) => {
                         return (
-                          <ManagerGrid key={index} page={index} row={row} />
+                          <VeterinaryGrid key={index} page={index} row={row} />
                         );
                       })}
                     </TableBody>
@@ -83,4 +80,4 @@ const Managers = () => {
   );
 };
 
-export default Managers;
+export default Veterinaries;

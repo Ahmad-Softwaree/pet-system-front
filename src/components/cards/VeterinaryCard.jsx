@@ -6,7 +6,7 @@ import { UiContext } from "@/context/UiContext";
 import { CONTEXT_TYPEs } from "@/context";
 import { UtilContext } from "@/context/UtilContext";
 import { convertTimeStampToDate } from "@/lib/functions";
-export default function EmployeeCard({ index, val }) {
+export default function VeterinaryCard({ index, val }) {
   const { dispatch } = useContext(UiContext);
   const { dispatch: util } = useContext(UtilContext);
 
@@ -19,27 +19,12 @@ export default function EmployeeCard({ index, val }) {
       <TableCell>{val?.age}</TableCell>
       <TableCell>{val?.salary}</TableCell>
       <TableCell>{val?.role}</TableCell>
-      <TableCell>
-        <button
-          onClick={() =>
-            util({
-              type: CONTEXT_TYPEs.OPERATION,
-              payload: {
-                id: val.id,
-                method: CONTEXT_TYPEs.MAKE_MANAGER,
-              },
-            })
-          }
-          className="p-2 px-4 rounded-md bg-tertiary-500 text-white">
-          Make Manager
-        </button>
-      </TableCell>
       <TableCell>{convertTimeStampToDate(val?.created_at)}</TableCell>
       <TableCell>
         <Update
           onClick={() =>
             dispatch({
-              type: CONTEXT_TYPEs.EMPLOYEE_FORM,
+              type: CONTEXT_TYPEs.VETERINARY_FORM,
               payload: {
                 id: val.id,
                 data: val,
@@ -58,7 +43,7 @@ export default function EmployeeCard({ index, val }) {
               type: CONTEXT_TYPEs.OPERATION,
               payload: {
                 id: val.id,
-                method: CONTEXT_TYPEs.DELETE_EMPLOYEE,
+                method: CONTEXT_TYPEs.DELETE_VETERINARY,
               },
             })
           }
