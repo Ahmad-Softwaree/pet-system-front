@@ -1,5 +1,6 @@
 import { homeParts } from "@/constants";
 import { AuthContext } from "@/context/AuthContext";
+import { useGetConfig } from "@/react-query/action/config.query";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,8 +8,13 @@ const Home = () => {
   const {
     state: { user },
   } = useContext(AuthContext);
+
+  const { data, isPending } = useGetConfig();
   return (
     <div className="w-full flex flex-col justify-center items-center  p-5 h-full gap-5 py-30">
+      <h1 className="w-full text-center mb-5 text-sub-heading1-bold">
+        $ {data?.money}
+      </h1>
       <div className="w-full flex flex-row justify-center items-center gap-10 flex-wrap">
         {homeParts.map((val, index) => {
           return (

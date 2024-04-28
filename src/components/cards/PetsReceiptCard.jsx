@@ -2,7 +2,6 @@ import { TableCell, TableRow } from "@/components/ui/table";
 
 import { convertTimeStampToDate } from "@/lib/functions";
 export default function PetsReceiptCard({ index, val }) {
-  console.log(val);
   return (
     <TableRow>
       <TableCell>{val.id}</TableCell>
