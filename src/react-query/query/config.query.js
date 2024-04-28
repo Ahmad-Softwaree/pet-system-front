@@ -1,6 +1,10 @@
 import { useToast } from "@/components/ui/use-toast";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { getConfig, getPetsReceipt, getProductsReceipt } from "./config.action";
+import {
+  getConfig,
+  getPetsReceipt,
+  getProductsReceipt,
+} from "../action/config.action";
 import { QUERY_KEYS } from "../keys/query.key";
 
 export const useGetConfig = () => {

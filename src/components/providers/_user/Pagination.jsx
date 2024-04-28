@@ -9,7 +9,7 @@ import { useGetCustomers } from "@/react-query/query/customer.query";
 import {
   useGetPetsReceipt,
   useGetProductsReceipt,
-} from "@/react-query/action/config.query";
+} from "@/react-query/query/config.query";
 
 const Pagination = ({ children, page }) => {
   const { ref, inView } = useInView();

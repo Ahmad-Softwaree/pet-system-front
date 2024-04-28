@@ -1,6 +1,6 @@
 import { homeParts } from "@/constants";
 import { AuthContext } from "@/context/AuthContext";
-import { useGetConfig } from "@/react-query/action/config.query";
+import { useGetConfig } from "@/react-query/query/config.query";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
