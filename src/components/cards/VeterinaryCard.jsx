@@ -17,7 +17,7 @@ export default function VeterinaryCard({ index, val }) {
       <TableCell>{val?.email}</TableCell>
       <TableCell>{val?.gender}</TableCell>
       <TableCell>{val?.age}</TableCell>
-      <TableCell>{val?.salary}</TableCell>
+      <TableCell>$ {val?.salary}</TableCell>
       <TableCell>{val?.role}</TableCell>
       <TableCell>{convertTimeStampToDate(val?.created_at)}</TableCell>
       <TableCell>

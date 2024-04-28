@@ -17,7 +17,7 @@ export default function ManagerCard({ index, val }) {
       <TableCell>{val?.email}</TableCell>
       <TableCell>{val?.gender}</TableCell>
       <TableCell>{val?.age}</TableCell>
-      <TableCell>{val?.salary}</TableCell>
+      <TableCell>$ {val?.salary}</TableCell>
       <TableCell>{val?.role}</TableCell>
       <TableCell>
         {val?.role !== "high_manager" ? (
